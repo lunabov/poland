@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Польша | Профессиональный Гид</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Дизайн-система (Цвета и переменные) --- */
+        :root[data-theme="light"] {
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #ffffff;
+            --accent: #dc143c;
+            --text-main: #1a1a1a;
+            --text-muted: #5c6873;
+            --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+            --nav-bg: rgba(255, 255, 255, 0.85);
+            --border: rgba(0, 0, 0, 0.08);
+            --overlay: rgba(0, 0, 0, 0.4);
+        }
+
+        :root[data-theme="dark"] {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #131a26;
+            --accent: #ff4d6d;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --card-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+            --nav-bg: rgba(19, 26, 38, 0.85);
+            --border: rgba(255, 255, 255, 0.08);
+            --overlay: rgba(0, 0, 0, 0.7);
+        }
+
+        /* --- Базовые стили --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-primary); color: var(--text-main); line-height: 1.6; }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
+        .section { padding: 90px 0; }
+        .section-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 3rem; letter-spacing: -1px; text-align: center; }
+        .section-title span { color: var(--accent); }
+        .btn { display: inline-block; padding: 0.75rem 1.5rem; background: var(--accent); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; cursor: pointer; border: none; font-family: inherit; font-size: 0.95rem; text-align: center; }
+        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        /* --- Шапка и Виджеты --- */
+        header { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: var(--nav-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: -0.5px; text-transform: uppercase; text-decoration: none; color: var(--text-main); }
+        .logo span { color: var(--accent); }
+        .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+
+        .widgets-bar { display: flex; gap: 1.2rem; font-size: 0.8rem; font-weight: 500; color: var(--text-muted); border-right: 1px solid var(--border); padding-right: 1.5rem; }
+        .widget-item { display: flex; align-items: center; gap: 0.3rem; }
+        @media (max-width: 768px) { .widgets-bar { display: none; } }
+
+        .theme-toggle { background: none; border: 1.5px solid var(--text-muted); color: var(--text-main); padding: 0.4rem 0.9rem; border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 0.8rem; display: flex; align-items: center; gap: 0.4rem; }
+        .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* --- Hero --- */
+        .hero { padding: 180px 0 100px 0; text-align: center; }
+        .badge { display: inline-block; padding: 0.3rem 0.8rem; background: rgba(220, 20, 60, 0.1); color: var(--accent); border-radius: 50px; font-size: 0.75rem; font-weight: 700; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .hero h1 { font-size: 3.8rem; font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 1.5rem; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2.5rem; max-width: 650px; margin-left: auto; margin-right: auto; font-weight: 300; }
+
+        /* --- Карточки городов + Истории --- */
+        .grid-cities { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .card { background: var(--bg-secondary); border-radius: 14px; overflow: hidden; box-shadow: var(--card-shadow); border: 1px solid var(--border); display: flex; flex-direction: column; }
+        .card-img-wrapper { height: 230px; overflow: hidden; position: relative; background: #e5e7eb; }
+        .card-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+        .card:hover .card-img { transform: scale(1.04); }
+        .card-body { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .card-body h3 { font-size: 1.4rem; margin-bottom: 0.75rem; font-weight: 700; }
+        .card-body p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; font-weight: 300; }
+
+        /* Модальные окна для истории */
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--overlay); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .modal.active { opacity: 1; pointer-events: auto; }
+        .modal-content { background: var(--bg-secondary); padding: 2.5rem; border-radius: 16px; max-width: 600px; width: 90%; max-height: 85vh; overflow-y: auto; box-shadow: var(--card-shadow); position: relative; transform: translateY(20px); transition: transform 0.3s ease; }
+        .modal.active .modal-content { transform: translateY(0); }
+        .modal-close { position: absolute; top: 1.25rem; right: 1.25rem; font-size: 1.8rem; cursor: pointer; color: var(--text-muted); background: none; border: none; outline: none; }
+        .modal-close:hover { color: var(--accent); }
+        .modal-content h2 { margin-bottom: 1rem; font-size: 2rem; font-weight: 800; }
+        .modal-content p { color: var(--text-muted); font-size: 1rem; margin-bottom: 1rem; font-weight: 300; }
+
+        /* --- Секция Интересных фактов (Flip Cards) --- */
+        .grid-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+        .flip-card { perspective: 1000px; height: 220px; cursor: pointer; }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+        .card-front, .card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem; border: 1px solid var(--border); box-shadow: var(--card-shadow); }
+        .card-front { background: var(--bg-secondary); color: var(--text-main); }
+        .card-front .icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .card-front h4 { font-size: 1.1rem; font-weight: 700; }
+        .card-back { background: var(--accent); color: white; transform: rotateY(180deg); font-size: 0.95rem; font-weight: 400; line-height: 1.4; }
+
+        /* --- Блок FAQ (Аккордеон) --- */
+        .faq-container { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+        .faq-item { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+        .faq-header { padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; user-select: none; }
+        .faq-icon { font-size: 1.2rem; transition: transform 0.25s ease; color: var(--accent); }
+        .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.25s cubic-bezier(0, 1, 0, 1); }
+        .faq-content { padding: 1.5rem; color: var(--text-muted); font-size: 0.95rem; border-top: 1px solid var(--border); font-weight: 300; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+        .faq-item.active .faq-body { max-height: 1000px; transition: max-height 0.25s cubic-bezier(1, 0, 1, 0); }
+
+        /* --- Подвал --- */
+        footer { background: var(--bg-secondary); padding: 3rem 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">Polska<span>.</span></a>
+            <div class="nav-right">
+                <div class="widgets-bar">
+                    <div class="widget-item">⏱ <span id="w-time">00:00</span></div>
+                    <div class="widget-item">🌤 Варшава: <span id="w-weather">+18°C</span></div>
+                    <div class="widget-item">💶 EUR/PLN: <span id="w-currency">4.32</span></div>
+                </div>
+                <button class="theme-toggle" id="themeToggle">
+                    <span id="themeIcon">🌙</span> <span id="themeText">Темная</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <span class="badge">Премиум путеводитель 2026</span>
+            <h1>Польша: Эпохи и Контрасты</h1>
+            <p>Откройте для себя богатое историческое наследие, завораживающую архитектуру и секреты главных культурных центров Польши.</p>
+            <a href="#cities" class="btn">Изучить города</a>
+        </div>
+    </section>
+
+    <section class="section" id="cities">
+        <div class="container">
+            <h2 class="section-title">Великие <span>Города</span></h2>
+            <div class="grid-cities">
+
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="image1.jpg" alt="Варшава" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3>Варшава</h3>
+                        <p>Динамичный мегаполис, сочетающий футуристические небоскребы и бережно восстановленный исторический центр.</p>
+                        <button class="btn" onclick="openModal('modal-warsaw')">Читать историю</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="image2.jpg" alt="Краков" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3>Краков</h3>
+                        <p>Древнее сердце Польши. Город королей, грандиозных замков и неповторимой средневековой ауры.</p>
+                        <button class="btn" onclick="openModal('modal-krakow')">Читать историю</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="image3.jpg" alt="Гданьск" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3>Гданьск</h3>
+                        <p>Морские ворота страны, славящиеся свободолюбивым духом, северной готикой и лучшим в мире янтарем.</p>
+                        <button class="btn" onclick="openModal('modal-gdansk')">Читать историю</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="modal-warsaw" onclick="closeModal(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="document.getElementById('modal-warsaw').classList.remove('active')">&times;</button>
+            <h2>История Варшавы</h2>
+            <p><strong>Город-Феникс.</strong> Основанная на рубеже XIII и XIV веков, Варшава стала официальной столицей Польши в 1596 году, когда король Сигизмунд III Ваза перенес сюда свою резиденцию из Кракова.</p>
+            <p>Самая драматичная страница истории — Вторая мировая война, в ходе которой город был разрушен практически на 85%. Однако после войны поляки совершили невероятное: по старым чертежам и картинам они с абсолютной точностью восстановили весь Старый город, который теперь включен в список всемирного наследия ЮНЕСКО.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-krakow" onclick="closeModal(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="document.getElementById('modal-krakow').classList.remove('active')">&times;</button>
+            <h2>История Кракова</h2>
+            <p><strong>Королевское Величие.</strong> Краков — один из старейших городов Польши, основанный в VII веке. До 1596 года он являлся столицей государства и основным местом коронации польских монархов в знаменитом Вавельском соборе.</p>
+            <p>В отличие от Варшавы, исторический центр Кракова практически не пострадал в горниле Второй мировой войны, благодаря чему сохранил свою оригинальную средневековую планировку. Его Рыночная площадь по сей день остается крупнейшей в Европе.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-gdansk" onclick="closeModal(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="document.getElementById('modal-gdansk').classList.remove('active')">&times;</button>
+            <h2>История Гданьска</h2>
+            <p><strong>Вольный Город.</strong> Гданьск имеет богатейшую 1000-летнюю историю. Из-за стратегического положения на Балтийском море город веками переходил от Польши к Германии (где именовался Данцигом) и обратно, часто обладая уникальным статусом «Вольного города».</p>
+            <p>Гданьск вошел в мировую историю как место, где начались первые бои Второй мировой войны (оборона Вестерплатте), а в 1980-х годах именно здесь на судоверфях зародилось профсоюзное движение «Солидарность», изменившее ход современной европейской истории.</p>
+        </div>
+    </div>
+
+    <section class="section" style="background: rgba(128,128,128,0.02); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <div class="container">
+            <h2 class="section-title">Знаете ли вы, <span>что...</span></h2>
+            <div class="grid-facts">
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="card-front">
+                            <div class="icon">🏰</div>
+                            <h4>Мальборк</h4>
+                        </div>
+                        <div class="card-back">
+                            <p>В Польше находится замок Мальборк — самый большой кирпичный замок в мире по площади территории, построенный когда-то крестоносцами.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="card-front">
+                            <div class="icon">🦬</div>
+                            <h4>Беловежская пуща</h4>
+                        </div>
+                        <div class="card-back">
+                            <p>Это старейший первобытный лес Европы, на территории которого живет крупнейшая мировая популяция тяжелейших сухопутных животных континента — зубров.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="card-front">
+                            <div class="icon">🪙</div>
+                            <h4>Лауреаты Нобеля</h4>
+                        </div>
+                        <div class="card-back">
+                            <p>Польша подарила миру 19 лауреатов Нобелевской премии, среди которых великая женщина-ученый Мария Склодовская-Кюри.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Вопросы и <span>Ответы</span></h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-header">Какую валюту брать с собой в поездку? <span class="faq-icon">+</span></div>
+                    <div class="faq-body">
+                        <div class="faq-content">Официальной валютой является польский злотый (PLN). Хотя Польша состоит в ЕС, евро здесь практически нигде не принимают к оплате наличными. Банковские карты работают повсеместно, но немного наличных иметь стоит.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">Какой город выбрать для первого визита? <span class="faq-icon">+</span></div>
+                    <div class="faq-body">
+                        <div class="faq-content">Для глубокого погружения в историю и классическую европейскую атмосферу выбирайте Краков. Если любите ритм мегаполисов и футуристичные виды — Варшаву. За морской романтикой отправляйтесь в Гданьск.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-header">Безопасно ли путешествовать по Польше? <span class="faq-icon">+</span></div>
+                    <div class="faq-body">
+                        <div class="faq-content">Да, Польша стабильно находится в топе самых безопасных стран Европы. Уровень уличной преступности здесь крайне низок, можно спокойно гулять по вечерам, соблюдая базовые правила осторожности.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Polska Travel Guide. Профессиональная локальная сборка.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Переключение тем
+        const toggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+        const htmlElement = document.documentElement;
+
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            let newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            htmlElement.setAttribute('data-theme', newTheme);
+            themeIcon.textContent = newTheme === 'light' ? '🌙' : '☀️';
+            themeText.textContent = newTheme === 'light' ? 'Темная' : 'Светлая';
+        });
+
+        // 2. Управление Модальными Окнами (Истории)
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+        function closeModal(e) {
+            if(e.target.classList.contains('modal')) {
+                e.target.classList.remove('active');
+            }
+        }
+
+        // 3. Аккордеон FAQ
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const header = item.querySelector('.faq-header');
+            header.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active')); // Закрыть остальные
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        // 4. Имитация Виджетов (Время, Погода, Валюта)
+        function updateWidgets() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('ru-RU', { timeZone: 'Europe/Warsaw', hour: '2-digit', minute: '2-digit' });
+            document.getElementById('w-time').textContent = timeStr + ' (Варшава)';
+
+            const baseCurrency = 4.32;
+            const randomDelta = (Math.random() * 0.04 - 0.02);
+            document.getElementById('w-currency').textContent = (baseCurrency + randomDelta).toFixed(2);
+        }
+
+        setInterval(updateWidgets, 4000);
+        updateWidgets();
+    </script>
+</body>
+</html>
